@@ -28,8 +28,13 @@ cp -p init-functions %{buildroot}/lib/lsb
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/license
 cp %{SOURCE1002} $RPM_BUILD_ROOT%{_datadir}/license
 
+# license
+mkdir -p %{buildroot}/usr/share/license
+cp LICENSE %{buildroot}/usr/share/license/%{name}
+
 %files
 %manifest %{name}.manifest
 %defattr(-,root,root,-)
 %{_datadir}/license/%{name}
 /lib/lsb/init-functions
+/usr/share/license/%{name}

@@ -33,4 +33,3 @@ cp %{SOURCE1002} $RPM_BUILD_ROOT%{_datadir}/license
 %defattr(-,root,root,-)
 %{_datadir}/license/%{name}
 /lib/lsb/init-functions
-

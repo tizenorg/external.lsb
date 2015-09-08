@@ -3,10 +3,11 @@
 Name:       lsb
 Summary:    LSB support for SLP
 Version:    3.2
-Release:    2
+Release:    3
 Group:      System/Base
-License:    GPLv2
+License:    GPL-2.0+
 Source0:    %{name}-%{version}.tar.gz
+Source1001:	%{name}.manifest
 Provides:   /lib/lsb/init-functions
 
 %description
@@ -16,12 +17,18 @@ Linux Standard Base 3.2
 %setup -q
 
 %build
+cp %{SOURCE1001} .
 
 %install
 rm -rf %{buildroot}
 install -d %{buildroot}/lib/lsb
 cp -p init-functions %{buildroot}/lib/lsb
 
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/license/
+cp LICENSE $RPM_BUILD_ROOT%{_datadir}/license/%{name}
+
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
+%{_datadir}/license/%{name}
 /lib/lsb/init-functions
